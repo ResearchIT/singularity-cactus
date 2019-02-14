@@ -1,0 +1,13 @@
+Bootstrap: docker
+From: ubuntu:xenial
+
+%post
+	apt update
+	apt -y install python2.7 python-pip git
+	git clone https://github.com/ComparativeGenomicsToolkit/cactus cactus
+	cd cactus
+	pip install virtualenv
+	virtualenv cactus_env
+	bash cactus_env/bin/activate
+	pip install --upgrade toil
+	pip install --upgrade .
